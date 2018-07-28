@@ -108,32 +108,6 @@ public class ViewVehiclesBy implements VehiclesModel {
 
     }
 
-//    class CompareAboutBrand implements Comparator<Vehicle>
-//    {
-//        @Override
-//        public int compare(Vehicle o1, Vehicle o2) {
-//            if (o1.getBrand().equals(o2.getBrand()))
-//                return 0;
-//            else if (o1.getBrand().hashCode() > o2.getBrand().hashCode())
-//                return 1;
-//
-//            return -1;
-//        }
-//    }
-//
-//    class CompareAboutYear implements Comparator<Vehicle>
-//    {
-//        @Override
-//        public int compare(Vehicle o1, Vehicle o2) {
-//            if(o1.getManufacturingYear()==o2.getManufacturingYear())
-//                return 0;
-//            else if(o1.getManufacturingYear()< o2.getManufacturingYear())
-//                return -1;
-//            return 1;
-//        }
-//    }
-
-
 }
 
 
