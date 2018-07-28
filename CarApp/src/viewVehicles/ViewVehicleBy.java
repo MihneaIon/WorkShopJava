@@ -5,7 +5,12 @@ import models.Type;
 import models.Vehicle;
 import read.ReadFromFile;
 
-import java.util.*;
+import java.util.List;
+import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.Collections;
+
+import java.util.stream.Collectors;
 
 public class ViewVehiclesBy implements VehiclesModel {
 
@@ -22,18 +27,30 @@ public class ViewVehiclesBy implements VehiclesModel {
 
         List<Vehicle> printVehicles = new ArrayList<>();
 
+        /*
+        *
+        In metoda aceasta nu am reusit sa afisez folosind lambda
+         expresion toata lista sortata dupa un anumit tip ci doar
+          elementele de acel tip din lista
+        *
+         */
+
         try {
             myVehicles = ReadFromFile.read();
-            System.out.println(myVehicles);
-            for (Iterator<Vehicle> iterator = myVehicles.iterator(); iterator.hasNext(); ) {
-                Vehicle value = iterator.next();
-                if (value.getType().equals(myType)) {
-                    printVehicles.add(value);
-                    iterator.remove();
-                }
-            }
-            printVehicles.addAll(myVehicles);
+            printVehicles = myVehicles.stream().filter(p -> p.getType().equals(myType)).collect(Collectors.toList());
             System.out.println(printVehicles);
+            System.out.println(myVehicles);
+
+
+//            for (Iterator<Vehicle> iterator = myVehicles.iterator(); iterator.hasNext(); ) {
+//                Vehicle value = iterator.next();
+//                if (value.getType().equals(myType)) {
+//                    printVehicles.add(value);
+//                    iterator.remove();
+//                }
+//            }
+//            printVehicles.addAll(myVehicles);
+//            System.out.println(printVehicles);
 
         } catch (Exception e) {
             System.out.println("Error");
@@ -58,18 +75,12 @@ public class ViewVehiclesBy implements VehiclesModel {
         if (choose.toLowerCase().equals("brand")) {
 
             Collections.sort(listOfPropertiesWanted, (Vehicle v1, Vehicle v2) -> v1.getBrand().compareTo(v2.getBrand()));
-            for (Vehicle auxVehicles : listOfPropertiesWanted) {
-                System.out.println(auxVehicles);
-            }
-            //listOfPropertiesWanted = displayVehiclesByBrand();
+            System.out.println(listOfPropertiesWanted);
 
         } else if (choose.toLowerCase().equals("manufacturing year")) {
 
             Collections.sort(listOfPropertiesWanted, (Vehicle v1, Vehicle v2) -> v1.getManufacturingYear() - v2.getManufacturingYear());
-            for (Vehicle auxVehicles : listOfPropertiesWanted) {
-                System.out.println(auxVehicles);
-            }
-            //listOfPropertiesWanted=displayVehiclesByManufacturingYear();
+            System.out.println(listOfPropertiesWanted);
         }
 
         return listOfPropertiesWanted;
@@ -77,18 +88,19 @@ public class ViewVehiclesBy implements VehiclesModel {
 
     @Override
     public List<Vehicle> viewAllVehicles() {
+        List<Vehicle> allVehicles = new ArrayList<>();
         try {
 
             myVehicles = ReadFromFile.read();
-            for (Vehicle auxVehicle : myVehicles) {
-                System.out.println(auxVehicle);
-            }
+            allVehicles = myVehicles.stream().collect(Collectors.toList()); // or
+            //allVehicles = myVehicles.stream().collect(Collectors.toCollection(() -> new ArrayList<Vehicles>()));
+            System.out.println(allVehicles);
 
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        return myVehicles;
+        return allVehicles;
     }
 
     public void display() {
