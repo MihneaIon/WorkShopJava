@@ -42,15 +42,16 @@ public class ViewVehiclesBy implements VehiclesModel {
             System.out.println(myVehicles);
 
 
-//            for (Iterator<Vehicle> iterator = myVehicles.iterator(); iterator.hasNext(); ) {
-//                Vehicle value = iterator.next();
-//                if (value.getType().equals(myType)) {
-//                    printVehicles.add(value);
-//                    iterator.remove();
-//                }
-//            }
-//            printVehicles.addAll(myVehicles);
-//            System.out.println(printVehicles);
+/*            for (Iterator<Vehicle> iterator = myVehicles.iterator(); iterator.hasNext(); ) {
+                Vehicle value = iterator.next();
+                if (value.getType().equals(myType)) {
+                    printVehicles.add(value);
+                    iterator.remove();
+                }
+            }
+            printVehicles.addAll(myVehicles);
+            System.out.println(printVehicles);
+*/
 
         } catch (Exception e) {
             System.out.println("Error");
