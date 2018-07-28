@@ -1,3 +1,11 @@
+/*
+*
+La exercitile 4 si 5 nu am mai
+facut clase noi ci am reutilizat clasele
+deja existente
+*
+*/
+
 package Lambda;
 
 import java.util.Arrays;
