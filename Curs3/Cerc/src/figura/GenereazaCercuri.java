@@ -1,4 +1,4 @@
-package Figura;
+package figura;
 
 import genereazRandomRaza.GenerezRaza;
 
