@@ -1,5 +1,5 @@
 
-import Figura.GenereazaCercuri;
+import figura.GenereazaCercuri;
 
 public class Main {
 
