@@ -1,4 +1,4 @@
-package Figura;
+package figura;
 
 public class Cerc extends Figura implements Comparable<Cerc> {
 
