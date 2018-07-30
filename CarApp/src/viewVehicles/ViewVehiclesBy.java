@@ -1,21 +1,16 @@
 package viewVehicles;
 
 import interfaces.VehiclesModel;
-import models.Type;
 import models.Vehicle;
 import read.ReadFromFile;
 
-import java.util.List;
-import java.util.Scanner;
-import java.util.ArrayList;
-import java.util.Collections;
+import java.util.*;
 
 import java.util.stream.Collectors;
 
 public class ViewVehiclesBy implements VehiclesModel {
 
     List<Vehicle> myVehicles;
-    private static final Scanner SCANNER = new Scanner(System.in);
 
     @Override
     public int compare(Vehicle o1, Vehicle o2) {
@@ -23,26 +18,19 @@ public class ViewVehiclesBy implements VehiclesModel {
     }
 
     @Override
-    public List<Vehicle> sortedVehiclesType(Type myType) {
+    public List<Vehicle> sortedVehiclesType() {
 
         List<Vehicle> printVehicles = new ArrayList<>();
 
-        /*
-        *
-        In metoda aceasta nu am reusit sa afisez folosind lambda
-         expresion toata lista sortata dupa un anumit tip ci doar
-          elementele de acel tip din lista
-        *
-         */
-
         try {
-            myVehicles = ReadFromFile.read();
-            printVehicles = myVehicles.stream().filter(p -> p.getType().equals(myType)).collect(Collectors.toList());
+            myVehicles = ReadFromFile.readVehicles();
+            printVehicles = myVehicles.stream().sorted((v1,v2)->v1.getType().name().compareTo(v2.getType().name()))
+                    .collect(Collectors.toList());//.filter(p -> p.getType().equals(myType)).collect(Collectors.toList());
             System.out.println(printVehicles);
-            System.out.println(myVehicles);
 
+/*              Metoda Veche
 
-/*            for (Iterator<Vehicle> iterator = myVehicles.iterator(); iterator.hasNext(); ) {
+                for (Iterator<Vehicle> iterator = myVehicles.iterator(); iterator.hasNext(); ) {
                 Vehicle value = iterator.next();
                 if (value.getType().equals(myType)) {
                     printVehicles.add(value);
@@ -51,7 +39,7 @@ public class ViewVehiclesBy implements VehiclesModel {
             }
             printVehicles.addAll(myVehicles);
             System.out.println(printVehicles);
-*/
+            */
 
         } catch (Exception e) {
             System.out.println("Error");
@@ -67,7 +55,7 @@ public class ViewVehiclesBy implements VehiclesModel {
         List<Vehicle> listOfPropertiesWanted = new ArrayList<>();
         try {
 
-            listOfPropertiesWanted = ReadFromFile.read();
+            listOfPropertiesWanted = ReadFromFile.readVehicles();
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -92,7 +80,7 @@ public class ViewVehiclesBy implements VehiclesModel {
         List<Vehicle> allVehicles = new ArrayList<>();
         try {
 
-            myVehicles = ReadFromFile.read();
+            myVehicles = ReadFromFile.readVehicles();
             allVehicles = myVehicles.stream().collect(Collectors.toList()); // or
             //allVehicles = myVehicles.stream().collect(Collectors.toCollection(() -> new ArrayList<Vehicles>()));
             System.out.println(allVehicles);
@@ -105,9 +93,25 @@ public class ViewVehiclesBy implements VehiclesModel {
     }
 
     public void display() {
-
     }
 
+    @Override
+    public List<Vehicle> sortedVehiclesByBrand() {
+        List<Vehicle> listOfPropertiesWanted = new ArrayList<>();
+        try {
+
+            listOfPropertiesWanted = ReadFromFile.readVehicles();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        Collections.sort(listOfPropertiesWanted, (Vehicle v1, Vehicle v2) -> v1.getBrand().compareTo(v2.getBrand()));
+        System.out.println(listOfPropertiesWanted);
+
+        return listOfPropertiesWanted;
+
+    }
+    
 }
 
 

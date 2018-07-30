@@ -7,7 +7,7 @@ public class Person {
 
     private String CNP; // sau int ??
     String firstName="",lastName="";
-    char gender='A';
+    String gender="alian";
     Date dateOfBirth;
     Date yearOfDrivingLicense;
 
@@ -16,7 +16,7 @@ public class Person {
 
     }
 
-    public Person(String CNP, String firstName, String lastName, char gender, Date dateOfBirth, Date yearOfDrivingLicense) {
+    public Person(String CNP, String firstName, String lastName, String gender, Date dateOfBirth, Date yearOfDrivingLicense) {
         this.CNP = CNP;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -49,11 +49,11 @@ public class Person {
         this.lastName = lastName;
     }
 
-    public char getGender() {
+    public String getGender() {
         return gender;
     }
 
-    public void setGender(char gender) {
+    public void setGender(String gender) {
         this.gender = gender;
     }
 
@@ -78,10 +78,10 @@ public class Person {
         if (this == o) return true;
         if (!(o instanceof Person)) return false;
         Person person = (Person) o;
-        return gender == person.gender &&
-                Objects.equals(CNP, person.CNP) &&
+        return Objects.equals(CNP, person.CNP) &&
                 Objects.equals(firstName, person.firstName) &&
                 Objects.equals(lastName, person.lastName) &&
+                Objects.equals(gender, person.gender) &&
                 Objects.equals(dateOfBirth, person.dateOfBirth) &&
                 Objects.equals(yearOfDrivingLicense, person.yearOfDrivingLicense);
     }
@@ -104,10 +104,11 @@ public class Person {
                 '}';
     }
 
-    public Person(String CNP, String firstName, String lastName, char gender) {
+    public Person(String CNP, String firstName, String lastName, String gender, Date yearOfDrivingLicense) {
         this.CNP = CNP;
         this.firstName = firstName;
         this.lastName = lastName;
         this.gender = gender;
+        this.yearOfDrivingLicense = yearOfDrivingLicense;
     }
 }

@@ -4,7 +4,8 @@ import java.util.Objects;
 
 public class Vehicle {
 
-    private int registrationNumber=0,manufacturingYear=0;
+    private int manufacturingYear=0;
+    private String registrationNumber="";
     private String brand="",color="";
     private Type type;
 
@@ -13,7 +14,7 @@ public class Vehicle {
 
     }
 
-    public Vehicle(int registrationNumber, int manufacturingYear, String brand, String color, Type type) {
+    public Vehicle(String registrationNumber,Type type,  String brand,int manufacturingYear, String color ) {
         this.registrationNumber = registrationNumber;
         this.manufacturingYear = manufacturingYear;
         this.brand = brand;
@@ -22,11 +23,11 @@ public class Vehicle {
 
     }
 
-    public int getRegistrationNumber() {
+    public String getRegistrationNumber() {
         return registrationNumber;
     }
 
-    public void setRegistrationNumber(int registrationNumber) {
+    public void setRegistrationNumber(String registrationNumber) {
         this.registrationNumber = registrationNumber;
     }
 
@@ -67,8 +68,8 @@ public class Vehicle {
         if (this == o) return true;
         if (!(o instanceof Vehicle)) return false;
         Vehicle vehicle = (Vehicle) o;
-        return registrationNumber == vehicle.registrationNumber &&
-                manufacturingYear == vehicle.manufacturingYear &&
+        return manufacturingYear == vehicle.manufacturingYear &&
+                Objects.equals(registrationNumber, vehicle.registrationNumber) &&
                 Objects.equals(brand, vehicle.brand) &&
                 Objects.equals(color, vehicle.color) &&
                 type == vehicle.type;
@@ -77,7 +78,7 @@ public class Vehicle {
     @Override
     public int hashCode() {
 
-        return Objects.hash(registrationNumber, manufacturingYear, brand, color, type);
+        return Objects.hash(manufacturingYear, registrationNumber, brand, color, type);
     }
 
     @Override

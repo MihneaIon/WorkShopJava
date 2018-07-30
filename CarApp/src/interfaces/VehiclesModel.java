@@ -10,6 +10,7 @@ import java.util.function.Predicate;
 public interface VehiclesModel extends Comparator<Vehicle> {
 
     public List<Vehicle> sortedVehiclesBy(String name);
-    public List<Vehicle> sortedVehiclesType(Type myType);
+    public List<Vehicle> sortedVehiclesByBrand();
+    public List<Vehicle> sortedVehiclesType();
     public List<Vehicle> viewAllVehicles();
 }
