@@ -1,4 +1,3 @@
-
 package Lambda;
 
 import java.util.Arrays;
@@ -7,6 +6,13 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) {
+
+       // CevaCuThred myCevaThread=new CevaCuThred();
+        //myCevaThread.startThread();
+       // myCevaThread.startThread2();
+
+//        ThreadLambda threadLambda=new ThreadLambda();
+//        threadLambda.startThread();
 
         StreamExemple exemple=new StreamExemple();
         exemple.met1();
