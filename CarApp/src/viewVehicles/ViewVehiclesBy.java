@@ -24,7 +24,7 @@ public class ViewVehiclesBy implements VehiclesModel {
 
         try {
             myVehicles = ReadFromFile.readVehicles();
-            printVehicles = myVehicles.stream().sorted((v1,v2)->v1.getType().name().compareTo(v2.getType().name()))
+            printVehicles = myVehicles.stream().sorted((v1, v2) -> v1.getType().name().compareTo(v2.getType().name()))
                     .collect(Collectors.toList());//.filter(p -> p.getType().equals(myType)).collect(Collectors.toList());
             System.out.println(printVehicles);
 
@@ -51,27 +51,15 @@ public class ViewVehiclesBy implements VehiclesModel {
 
 
     @Override
-    public List<Vehicle> sortedVehiclesBy(String choose) {
+    public List<Vehicle> sortedVehiclesByYear() {
         List<Vehicle> listOfPropertiesWanted = new ArrayList<>();
         try {
-
             listOfPropertiesWanted = ReadFromFile.readVehicles();
-
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-        if (choose.toLowerCase().equals("brand")) {
-
-            Collections.sort(listOfPropertiesWanted, (Vehicle v1, Vehicle v2) -> v1.getBrand().compareTo(v2.getBrand()));
-            System.out.println(listOfPropertiesWanted);
-
-        } else if (choose.toLowerCase().equals("manufacturing year")) {
-
-            Collections.sort(listOfPropertiesWanted, (Vehicle v1, Vehicle v2) -> v1.getManufacturingYear() - v2.getManufacturingYear());
-            System.out.println(listOfPropertiesWanted);
-        }
-
+        Collections.sort(listOfPropertiesWanted, (Vehicle v1, Vehicle v2) -> v1.getManufacturingYear() - v2.getManufacturingYear());
+        System.out.println(listOfPropertiesWanted);
         return listOfPropertiesWanted;
     }
 
@@ -111,7 +99,7 @@ public class ViewVehiclesBy implements VehiclesModel {
         return listOfPropertiesWanted;
 
     }
-    
+
 }
 
 
