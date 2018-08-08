@@ -12,7 +12,7 @@ public class Rent {
     private String nrMasina;
 
 
-    public void readReatedList() throws Exception {
+    public void readListFromFile() throws Exception {
         FileWriter fileWriter;
         BufferedReader bufferedReader;
         String text = "";
